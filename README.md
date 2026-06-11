@@ -2,9 +2,6 @@
 
 > Data Structures & Algorithms — TypeScript · Python · REST API
 
-![CI TypeScript](https://github.com/Jaime-D-Z/dsa-core/blob/main/.github/workflows/ci-ts.yml/badge.svg)
-![CI Python](https://github.comJaime-D-Z/dsa-core/blob/main/.github/workflows/ci-py.yml/badge.svg)
-
 Mono-repo que implementa estructuras de datos y algoritmos clásicos desde cero,
 exponiéndolos en una API REST real con Swagger docs.
 
