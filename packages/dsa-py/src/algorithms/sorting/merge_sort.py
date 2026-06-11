@@ -1,15 +1,31 @@
 """Merge Sort — O(n log n) en todos los casos. Estable."""
-from typing import TypeVar, Callable, Protocol, cast
+from typing import TypeVar, Callable, Protocol, cast, overload
 
 T = TypeVar("T")
 Cmp = TypeVar("Cmp", bound="Comparable")
 
 
 class Comparable(Protocol):
+    def __lt__(self, other: object, /) -> bool: ...
     def __le__(self, other: object, /) -> bool: ...
 
 
+@overload
+def merge_sort(arr: list[Cmp], key: None = None) -> list[Cmp]: ...
+
+
+@overload
+def merge_sort(arr: list[T], key: Callable[[T], Cmp]) -> list[T]: ...
+
+
 def merge_sort(
+    arr: list[T],
+    key: Callable[[T], Cmp] | None = None,
+) -> list[T]:
+    return _merge_sort(arr, key)
+
+
+def _merge_sort(
     arr: list[T],
     key: Callable[[T], Cmp] | None = None,
 ) -> list[T]:
@@ -17,8 +33,8 @@ def merge_sort(
         return arr[:]
 
     mid   = len(arr) // 2
-    left  = merge_sort(arr[:mid], key)
-    right = merge_sort(arr[mid:], key)
+    left  = _merge_sort(arr[:mid], key)
+    right = _merge_sort(arr[mid:], key)
     return _merge(left, right, key)
 
 
