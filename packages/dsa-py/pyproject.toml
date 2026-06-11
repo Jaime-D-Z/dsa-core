@@ -1,0 +1,22 @@
+[build-system]
+requires      = ["setuptools>=68.0"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name            = "dsa-py"
+version         = "1.0.0"
+description     = "Data Structures & Algorithms — Python"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths    = ["tests"]
+python_files = ["test_*.py"]
+addopts      = "-v --cov=src --cov-report=term-missing"
+
+[tool.mypy]
+python_version        = "3.12"
+strict                = true
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["src"]
